@@ -23,6 +23,8 @@ const GuessStyles = {
         border: 1px solid #CCCCCC;
         background: #FFFFFF;
         box-sizing: border-box;
+        padding-left: 10px;
+        padding-right: 10px;
     `,
     GuessButton: styled.button`
         margin-left: 20px;
@@ -31,6 +33,7 @@ const GuessStyles = {
         font-weight: 700;
         font-size: 16px;
         color: #3C76A1;
+        cursor: pointer;
     `
 };
 

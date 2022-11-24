@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 import Game from "./Game";
-//import Guess from "./Guess";
+import Guess from "./Guess";
 //import Letters from "./Letters";
 
 import AppStyles from "./assets/styles/AppStyles";
@@ -24,9 +24,9 @@ const App = () => {
         <AppStyles.GameDiv>
             <Reset></Reset>
             <Game hangmanImage={hangmanImage}></Game>
+            <Guess></Guess>
             {/*
             <Letters></Letters>
-            <Guess></Guess>
             */}
         </AppStyles.GameDiv>
     );

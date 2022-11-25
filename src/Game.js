@@ -6,9 +6,9 @@ const Game = (props) => (
             <GameStyles.HangmanImage src={props.hangmanImage}></GameStyles.HangmanImage>
         </GameStyles.LeftGameItem>
         <GameStyles.RightGameItem>
-            <GameStyles.StartGameButton>Escolher Palavra</GameStyles.StartGameButton>
+            <GameStyles.StartGameButton onClick={props.chooseWord}>Escolher Palavra</GameStyles.StartGameButton>
             <GameStyles.WordDiv>
-                <GameStyles.SpanWord>_</GameStyles.SpanWord>
+                {props.wordProgress.map(word => <GameStyles.SpanWord key={"letter_index_" + Array.prototype.indexOf.call(props.wordProgress, word)}>{word.isDiscovered  ? word.letter : "_"}</GameStyles.SpanWord>)}
             </GameStyles.WordDiv>
         </GameStyles.RightGameItem>
     </GameStyles.GameItems>

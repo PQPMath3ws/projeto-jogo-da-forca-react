@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.js": "/projeto-jogo-da-forca-react/static/js/main.c36dbd51.js",
+    "static/js/787.3cdda4e9.chunk.js": "/projeto-jogo-da-forca-react/static/js/787.3cdda4e9.chunk.js",
+    "static/media/forca6.png": "/projeto-jogo-da-forca-react/static/media/forca6.afdf03495878c3267efe.png",
+    "static/media/forca5.png": "/projeto-jogo-da-forca-react/static/media/forca5.bdf79337937f607f16af.png",
+    "static/media/forca4.png": "/projeto-jogo-da-forca-react/static/media/forca4.2062be27168b92ff7995.png",
+    "static/media/forca3.png": "/projeto-jogo-da-forca-react/static/media/forca3.a1c636aa6bd28cb01e67.png",
+    "static/media/forca2.png": "/projeto-jogo-da-forca-react/static/media/forca2.bbd9041e6b844b7d4679.png",
+    "static/media/forca1.png": "/projeto-jogo-da-forca-react/static/media/forca1.cad67068764c8063ab83.png",
+    "static/media/forca0.png": "/projeto-jogo-da-forca-react/static/media/forca0.00d24443942a50ed0ec0.png",
+    "index.html": "/projeto-jogo-da-forca-react/index.html",
+    "main.c36dbd51.js.map": "/projeto-jogo-da-forca-react/static/js/main.c36dbd51.js.map",
+    "787.3cdda4e9.chunk.js.map": "/projeto-jogo-da-forca-react/static/js/787.3cdda4e9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.c36dbd51.js"
+  ]
+}

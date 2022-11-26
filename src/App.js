@@ -50,19 +50,27 @@ const App = () => {
         if (changes !== 0) {
             setWordProgress(newWordProgress);
             if (wordProgress.filter(letterProgress => letterProgress.isDiscovered).length === wordProgress.length) {
-                setLettersState(lettersState.map(letterState => ({letter: letterState.letter, disabled: true})));
-                setWordProgress(wordProgress.map(letterProgress => ({letter: letterProgress.letter, isDiscovered: true, success: true})));
-                alert("Você ganhou!");
+                winGame();
             }
         } else {
             let indexOf = Array.prototype.indexOf.call(hangmanImages, hangmanImage);
             setHangmanImage(hangmanImages[indexOf + 1] ? hangmanImages[indexOf + 1] : hangmanImages[hangmanImages.length - 1]);
             if (indexOf === hangmanImages.length - 2) {
-                setLettersState(lettersState.map(letterState => ({letter: letterState.letter, disabled: true})));
-                setWordProgress(wordProgress.map(letterProgress => ({letter: letterProgress.letter, isDiscovered: true, success: false})));
-                alert("Você perdeu!");
+                loseGame();
             }
         }
+    }
+
+    function winGame() {
+        setLettersState(lettersState.map(letterState => ({letter: letterState.letter, disabled: true})));
+        setWordProgress(wordProgress.map(letterProgress => ({letter: letterProgress.letter, isDiscovered: true, success: true})));
+        alert("Você ganhou!");
+    }
+
+    function loseGame() {
+        setLettersState(lettersState.map(letterState => ({letter: letterState.letter, disabled: true})));
+        setWordProgress(wordProgress.map(letterProgress => ({letter: letterProgress.letter, isDiscovered: true, success: false})));
+        alert("Você perdeu!");
     }
 
     return (

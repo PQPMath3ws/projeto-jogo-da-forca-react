@@ -43,6 +43,7 @@ const GameStyles = {
         margin-left: 20px;
         font-weight: 700;
         font-size: 50px;
+        color: ${props => props.success === true ? "#27AE60" : props.success === false ? "#FF0000" : "#000000"}
     `
 };
 

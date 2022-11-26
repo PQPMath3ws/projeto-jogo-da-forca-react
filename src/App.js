@@ -28,15 +28,48 @@ const App = () => {
 
     function chooseWord() {
         let word = palavras[Math.floor(Math.random() * palavras.length)];
+        setHangmanImage(hangmanImages[0]);
         setWordProgress(word.split("").map(letter => ({letter: letter, isDiscovered: false})));
         setLettersState(alphaAscii.map((x) => ({disabled: false, letter: String.fromCharCode(x)})));
+    }
+
+    function guessLetter(letter) {
+        const newLettersState = lettersState.map(letterState => {
+            if (letterState.letter === letter) letterState.disabled = true;
+            return letterState;
+        });
+        setLettersState(newLettersState);
+        let changes = 0;
+        const newWordProgress = wordProgress.map(letterProgress => {
+            if (letterProgress.letter === letter) {
+                changes++;
+                letterProgress.isDiscovered = true;
+            }
+            return letterProgress;
+        });
+        if (changes !== 0) {
+            setWordProgress(newWordProgress);
+            if (wordProgress.filter(letterProgress => letterProgress.isDiscovered).length === wordProgress.length) {
+                setLettersState(lettersState.map(letterState => ({letter: letterState.letter, disabled: true})));
+                setWordProgress(wordProgress.map(letterProgress => ({letter: letterProgress.letter, isDiscovered: true, success: true})));
+                alert("Você ganhou!");
+            }
+        } else {
+            let indexOf = Array.prototype.indexOf.call(hangmanImages, hangmanImage);
+            setHangmanImage(hangmanImages[indexOf + 1] ? hangmanImages[indexOf + 1] : hangmanImages[hangmanImages.length - 1]);
+            if (indexOf === hangmanImages.length - 2) {
+                setLettersState(lettersState.map(letterState => ({letter: letterState.letter, disabled: true})));
+                setWordProgress(wordProgress.map(letterProgress => ({letter: letterProgress.letter, isDiscovered: true, success: false})));
+                alert("Você perdeu!");
+            }
+        }
     }
 
     return (
         <AppStyles.GameDiv>
             <Reset></Reset>
             <Game hangmanImage={hangmanImage} chooseWord={chooseWord} wordProgress={wordProgress}></Game>
-            <Letters lettersState={lettersState}></Letters>
+            <Letters lettersState={lettersState} guessLetter={guessLetter}></Letters>
             <Guess></Guess>
         </AppStyles.GameDiv>
     );

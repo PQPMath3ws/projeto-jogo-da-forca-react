@@ -43,7 +43,7 @@ const App = () => {
         setLettersState(newLettersState);
         let changes = 0;
         const newWordProgress = wordProgress.map(letterProgress => {
-            if (letterProgress.letter === letter) {
+            if (letterProgress.letter.normalize("NFD").replace(/[\u0300-\u036f]/g, "") === letter) {
                 changes++;
                 letterProgress.isDiscovered = true;
             }

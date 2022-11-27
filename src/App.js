@@ -26,6 +26,7 @@ const App = () => {
     const [lettersState, setLettersState] = useState(alphaAscii.map((x) => ({disabled: true, letter: String.fromCharCode(x)})));
     const [wordProgress, setWordProgress] = useState([]);
     const [guessInput, setGuessInput] = useState("");
+    const [disableGuess, setDisableGuess] = useState(true);
 
     function chooseWord() {
         let word = palavras[Math.floor(Math.random() * palavras.length)];
@@ -33,6 +34,7 @@ const App = () => {
         setWordProgress(word.split("").map(letter => ({letter: letter, isDiscovered: false})));
         setLettersState(alphaAscii.map((x) => ({disabled: false, letter: String.fromCharCode(x)})));
         setGuessInput("");
+        setDisableGuess(false);
     }
 
     function guessLetter(letter) {
@@ -79,6 +81,7 @@ const App = () => {
     function endGame(success) {
         setLettersState(lettersState.map(letterState => ({letter: letterState.letter, disabled: true})));
         setWordProgress(wordProgress.map(letterProgress => ({letter: letterProgress.letter, isDiscovered: true, success})));
+        setDisableGuess(true);
     }
 
     return (
@@ -86,7 +89,7 @@ const App = () => {
             <Reset></Reset>
             <Game hangmanImage={hangmanImage} chooseWord={chooseWord} wordProgress={wordProgress}></Game>
             <Letters lettersState={lettersState} guessLetter={guessLetter}></Letters>
-            <Guess guess={guess} guessInput={guessInput} setGuessInput={setGuessInput}></Guess>
+            <Guess guess={guess} guessInput={guessInput} setGuessInput={setGuessInput} isDisabled={disableGuess}></Guess>
         </AppStyles.GameDiv>
     );
 };
